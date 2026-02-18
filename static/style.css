@@ -1,0 +1,7 @@
+/* PulseGuard AI - Additional Styles */
+/* Main styles are in index.html for single-file deployment */
+/* This file kept for Flask static asset compatibility */
+
+body {
+    scroll-behavior: smooth;
+}
