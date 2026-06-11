@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <!-- 3D gradient for the outer ring -->
+    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="50%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <!-- Inner circle gradient for 3D depth -->
+    <radialGradient id="innerGrad" cx="40%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="70%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </radialGradient>
+    <!-- 3D highlight for the ring -->
+    <linearGradient id="ringHighlight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.3)"/>
+      <stop offset="30%" stop-color="rgba(255,255,255,0.05)"/>
+      <stop offset="70%" stop-color="rgba(0,0,0,0.1)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0.3)"/>
+    </linearGradient>
+    <!-- Shield gradient for 3D effect -->
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <!-- Pulse line gradient -->
+    <linearGradient id="pulseGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="50%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <!-- Glow filter -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Drop shadow for 3D depth -->
+    <filter id="dropShadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <!-- Inner shadow -->
+    <filter id="innerShadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+      <feOffset dx="0" dy="2" result="offsetBlur"/>
+      <feComposite in="SourceGraphic" in2="offsetBlur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Base shadow for 3D depth -->
+  <ellipse cx="200" cy="200" rx="155" ry="155" fill="rgba(0,0,0,0.3)" filter="url(#dropShadow)"/>
+
+  <!-- Outer ring with 3D bevel -->
+  <circle cx="200" cy="200" r="150" fill="url(#ringGrad)" filter="url(#dropShadow)"/>
+  <circle cx="200" cy="200" r="150" fill="url(#ringHighlight)"/>
+
+  <!-- Inner circle (dark background) -->
+  <circle cx="200" cy="200" r="130" fill="url(#innerGrad)" stroke="#1e293b" stroke-width="1"/>
+
+  <!-- Inner ring highlight for 3D depth -->
+  <circle cx="200" cy="200" r="130" fill="none" stroke="rgba(6,182,212,0.15)" stroke-width="2"/>
+
+  <!-- Shield/medical cross icon in center -->
+  <g transform="translate(200,185)">
+    <!-- Medical cross with 3D effect -->
+    <rect x="-28" y="-8" width="56" height="16" rx="4" fill="url(#shieldGrad)" filter="url(#glow)"/>
+    <rect x="-8" y="-28" width="16" height="56" rx="4" fill="url(#shieldGrad)" filter="url(#glow)"/>
+    <!-- Cross highlight -->
+    <rect x="-26" y="-6" width="52" height="12" rx="3" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+    <rect x="-6" y="-26" width="12" height="52" rx="3" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  </g>
+
+  <!-- Heart pulse line below the cross -->
+  <g transform="translate(200,225)" filter="url(#glow)">
+    <polyline points="-80,0 -60,0 -50,-12 -40,10 -30,-8 -20,8 -10,-10 0,6 10,-8 20,10 30,-12 40,8 50,0 80,0"
+              fill="none" stroke="url(#pulseGrad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Small decorative dots around the ring (orbiting effect) -->
+  <circle cx="200" cy="52" r="4" fill="#06b6d4" opacity="0.8">
+    <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="348" cy="200" r="4" fill="#818cf8" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;0.2;0.6" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="200" cy="348" r="4" fill="#10b981" opacity="0.7">
+    <animate attributeName="opacity" values="0.7;0.2;0.7" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="52" cy="200" r="4" fill="#0ea5e9" opacity="0.5">
+    <animate attributeName="opacity" values="0.5;0.2;0.5" dur="2.2s" repeatCount="indefinite"/>
+  </circle>
+</svg>
